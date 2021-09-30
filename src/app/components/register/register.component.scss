@@ -1,0 +1,49 @@
+.body {
+  border       : 1px solid;
+  border-color : gainsboro;
+  border-radius: 8px;
+  height       : auto;
+  width        : auto;
+  padding      : 30px;
+}
+
+.button-next {
+  display         : flex;
+  display         : table-cell;
+  margin          : 8px 8px 8px 0;
+  background-color: #1a73e8 
+}
+
+.show-Password {
+  margin: 12px 12px;
+  margin-left: 0.5vh;
+}
+
+.container .mat-form-field+.mat-form-field {
+  margin-left: 8px;
+}
+
+.hint {
+  font-size: 77%;
+  margin-left: 0.5vh;
+}
+
+.createAccountheader {
+  color         : #202124;
+  font-family   : 'Google Sans', 'Noto Sans Myanmar UI', arial, sans-serif;
+  font-size     : 24px;
+  font-weight   : 400;
+  line-height   : 1.3333;
+  padding-bottom: 0;
+  padding-top   : 16px;
+}
+
+.createAccountImage {
+  display    : flex;
+  align-items: center;
+}
+
+.invalid-feedback {
+  font-size: x-small;
+  color    : red;
+}
