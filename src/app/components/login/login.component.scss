@@ -1,0 +1,20 @@
+.body {
+   border       : 1px solid;
+   border-color : gainsboro;
+   border-radius: 8px;
+   height       : auto;
+   width        : 380px;
+   padding      : 30px;
+}
+
+.button-next {
+   display         : flex;
+   display         : table-cell;
+   margin          : 8px 8px 8px 0;
+   padding         : inherit;
+   background-color: #1a73e8
+}
+
+.show-Password {
+   margin-left: 0.5vh;
+}
