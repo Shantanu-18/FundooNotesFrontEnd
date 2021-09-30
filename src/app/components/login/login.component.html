@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxFlexFill="100hv">
   <mat-card class="body">
     <div fxLayout="column" fxLayoutAlign="center center">
-      
+
       <mat-card-title>
         <span style="color: #4285F4;">F</span>
         <span style="color: #EA4335;">u</span>
@@ -16,28 +16,39 @@
       <h3>Use your Fundoo Account</h3>
 
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-      <mat-form-field appearance="outline" [style.width.%]="95">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" [style.width.%]="95" class="form-group">
         <mat-label>Email</mat-label>
-        <input matInput type="email" id="email" name="email" formControlName="email">
+        <input matInput type="email" formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+        <mat-error *ngIf="submitted && f.email.errors">
+          <div *ngIf="f.email.errors.required" class="invalid-feedback">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </mat-error>
       </mat-form-field>
-     
+
       <mat-form-field appearance="outline" [style.width.%]="95">
         <mat-label>Password</mat-label>
-        <input [type]="hide?'password':'text'" matInput id="password" name="password" formControlName="password">
+        <input [type]="hide?'password':'text'" matInput formControlName="password" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+        <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </mat-error>
       </mat-form-field>
     </form>
+
     <div class="show-Password" (click)="showPassword()">
       <mat-checkbox>Show Password</mat-checkbox>
     </div>
 
     <div style="margin-top: 5%; margin-left: -2vh;">
-      <a mat-button href="http://localhost:4200/forgotPassword" target="_blank" style="color: #1a73e8;">Forgot Password?</a>
+      <a mat-button href="http://localhost:4200/forgotPassword" target="_blank" style="color: #1a73e8;">Forgot
+        Password?</a>
     </div>
 
     <div fxLayoutAlign="start center" fxLayoutGap="220px" style="margin-top: 5%; margin-left: -2vh;">
       <a mat-button href="http://localhost:4200/register" target="_blank" style="color: #1a73e8;">Create Account</a>
-      <button type="submit" [disabled]="!loginForm.valid" class="button-next" mat-raised-button color="primary">Sign in</button>
+      <button mat-raised-button class="button-next" color="primary" (click)="onSubmit()">Sign in</button>
     </div>
   </mat-card>
 </div>

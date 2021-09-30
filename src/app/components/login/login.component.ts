@@ -6,23 +6,28 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   hide: boolean = true;
-  
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
-  });
+  loginForm!:FormGroup;
+  submitted = false;
+ 
   constructor(private formBuilder: FormBuilder) { }
+ 
+  ngOnInit(){
+    this.loginForm=this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    })
+  }
 
-  get email() { return this.loginForm.get('email') };
-  get password() { return this.loginForm.get('password') }
+  get f() { return this.loginForm.controls; }
 
   showPassword() {
     this.hide = !this.hide;
   }
 
   onSubmit() {
+    this.submitted = true;
     console.log(this.loginForm.value);
   }
 }
