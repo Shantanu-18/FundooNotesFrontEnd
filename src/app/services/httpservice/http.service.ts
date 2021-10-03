@@ -8,7 +8,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  PostService(url = '', payload = null, token: boolean = false, headers:any = null) {
+  PostService(url = '', payload = null, token: boolean = false, headers: any = null) {
     return this.http.post(url, payload, token && headers)
   }
 
@@ -16,8 +16,8 @@ export class HttpService {
 
   }
 
-  PutService() {
-
+  PutService(url = '', payload = null, token: boolean = false, headers: any = null) {
+    return this.http.put(url, payload, token && headers)
   }
 
   DeleteService() {
