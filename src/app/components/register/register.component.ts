@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/userService/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
    selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
    submitted = false;
    hide: boolean = true;
 
-   constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+   constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar) { }
 
    ngOnInit() {
       this.registerForm = this.formBuilder.group({
@@ -46,6 +47,10 @@ export class RegisterComponent implements OnInit {
 
    showPassword() {
       this.hide = !this.hide;
+   }
+
+   showSnackbar(message: any, action: any) {
+      this.snackbar.open(message, action, { duration: 1500 });
    }
 
    get f() { return this.registerForm.controls; }
