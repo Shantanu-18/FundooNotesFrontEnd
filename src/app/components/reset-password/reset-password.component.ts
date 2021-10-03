@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/userService/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reset-password',
@@ -11,7 +13,7 @@ export class ResetPasswordComponent implements OnInit {
   resetPassword!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.resetPassword = this.formBuilder.group({
@@ -43,6 +45,10 @@ export class ResetPasswordComponent implements OnInit {
     this.hide = !this.hide;
   }
 
+  showSnackbar(message: any, action: any) {
+    this.snackbar.open(message, action, { duration: 1500 });
+  }
+
   get f() { return this.resetPassword.controls; }
 
   onSubmit() {
@@ -50,11 +56,18 @@ export class ResetPasswordComponent implements OnInit {
     this.submitted = true;
 
     if (this.resetPassword.invalid) {
-       return;
+      return;
     }
+    else {
+      let reqPayload = {
+        password: this.resetPassword.value.password,
+        confirm: this.resetPassword.value.confirmPassword
+      }
+      console.log(this.resetPassword.value);
 
-    console.log(this.resetPassword.value);
- }
+      this.userService.resetPasswordService(reqPayload).subscribe((res) => {
+        console.log(res)
+      })
+    }
+  }
 }
-
-
