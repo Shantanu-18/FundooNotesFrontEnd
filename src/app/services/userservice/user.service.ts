@@ -29,7 +29,7 @@ export class UserService {
         Authorization: this.token
       })
     }
-    return this.httpService.PostService(this.BaseUrl + '/User/Login', reqData, true, headers);
+    return this.httpService.PostService(this.BaseUrl + '/User/Login', reqData, false, headers);
   }
 
   forgotPasswordService(reqData: any) {
@@ -42,11 +42,11 @@ export class UserService {
     return this.httpService.PostService(this.BaseUrl + '/User/ForgotPassword', reqData, false, headers);
   }
 
-  resetPasswordService(reqData: any) {
+  resetPasswordService(reqData: any, token: any) {
     let headers = {
       headers: new HttpHeaders({
         'content-Type': 'application/json',
-        Authorization: this.token
+        Authorization: 'Bearer ' + token
       })
     }
     return this.httpService.PutService(this.BaseUrl + '/User/ResetPassword', reqData, true, headers);
