@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/userService/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-reset-password',
@@ -12,8 +13,9 @@ export class ResetPasswordComponent implements OnInit {
   hide: boolean = true;
   resetPassword!: FormGroup;
   submitted = false;
+  param : any;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.resetPassword = this.formBuilder.group({
@@ -52,22 +54,29 @@ export class ResetPasswordComponent implements OnInit {
   get f() { return this.resetPassword.controls; }
 
   onSubmit() {
-
+    
     this.submitted = true;
-
+    
     if (this.resetPassword.invalid) {
       return;
     }
     else {
       let reqPayload = {
         password: this.resetPassword.value.password,
-        confirm: this.resetPassword.value.confirmPassword
+        confirmPassword: this.resetPassword.value.confirmPassword
       }
       console.log(this.resetPassword.value);
+      
+      this.route.paramMap.subscribe(params => {
+        this.param = params.get("token");
+      });
+      
+      localStorage.setItem("token", this.param);
 
-      this.userService.resetPasswordService(reqPayload).subscribe((res) => {
+      this.userService.resetPasswordService(reqPayload,this.param).subscribe((res) => {
         console.log(res)
       })
+
     }
   }
 }
