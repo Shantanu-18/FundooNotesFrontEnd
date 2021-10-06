@@ -28,10 +28,6 @@ export class LoginComponent implements OnInit {
     this.hide = !this.hide;
   }
 
-  showSnackbar(message: any, action: any) {
-    this.snackbar.open(message, action, { duration: 1500 });
-  }
-
   onSubmit() {
     this.submitted = true;
 
@@ -43,9 +39,13 @@ export class LoginComponent implements OnInit {
       }
       console.log(this.loginForm.value);
 
-      this.userService.loginService(reqPayload).subscribe((res) => {
+      this.snackbar.open('Login Successful', '', { duration: 1500 });
+
+      this.userService.loginService(reqPayload).subscribe((res: any) => {
         console.log(res);
-      })
+
+        localStorage.setItem("token", res.token);
+      });
     }
   }
 }
