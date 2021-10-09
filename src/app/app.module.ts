@@ -26,6 +26,10 @@ import { IconsComponent } from './components/icons/icons.component';
 import { CreateNotesComponent } from './components/create-notes/create-notes.component';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AuthenticationGuard } from './services/authentication.guard';
+import { UpdateComponent } from './components/update/update.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     GetAllNotesComponent,
     IconsComponent,
     CreateNotesComponent,
-    DisplayNotesComponent
+    DisplayNotesComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +63,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule,
+    MatMenuModule
   ],
-  providers: [],
+  providers: [AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
