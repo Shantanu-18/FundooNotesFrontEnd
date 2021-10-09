@@ -13,4 +13,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logOut(){
+    localStorage.clear()
+    location.href = "http://localhost:4200/login";
+  }
 }
