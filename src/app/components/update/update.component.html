@@ -1,0 +1,16 @@
+<div class="textArea-title">
+   <input matInput [(ngModel)]="title">
+</div>
+<div class="textArea-message">
+   <input matInput [(ngModel)]="message">
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between end">
+   <div fxFlex="70">
+      <app-icons></app-icons>
+   </div>
+   <div><button mat-icon-button (click)="onClose()" style="opacity: 0.9;">
+         Close
+      </button></div>
+</div>
+<!-- style="margin-bottom: 13px;"  -->
+<!-- style="margin-bottom: 20px;" -->

@@ -1,0 +1,32 @@
+.textArea-title {
+   font-family: 'Google Sans', Roboto, Arial, sans-serif;
+   font-size  : 1.375rem;
+   font-weight: 400;
+   // display    : block !important;
+   line-height: 1.75rem;
+   padding-bottom: 12px;
+   padding-top: 0px;
+   word-wrap: break-word;
+   overflow: auto;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 100; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.textArea-message {
+   letter-spacing: .00625em;
+   font-family: Roboto,Arial,sans-serif;
+   word-wrap: break-word !important;
+   white-space: pre-wrap !important;
+   text-overflow: ellipsis;
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5rem;
+   padding: 4px 0px 12px 0px;
+   overflow: auto;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 100; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
