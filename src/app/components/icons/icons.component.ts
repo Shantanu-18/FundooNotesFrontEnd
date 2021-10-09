@@ -16,13 +16,24 @@ export class IconsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete() {
+  onDelete() {
     let reqPayload = {
       id: this.note.id
     }
     console.log('noteId', this.note.id);
 
     this.noteService.deleteNoteService(reqPayload).subscribe((result) => {
+      console.log(result);
+    })
+  }
+
+  onArchive() {
+    let reqPayload = {
+      id: this.note.id
+    }
+    console.log('noteId', this.note.id);
+
+    this.noteService.archiveNoteService(reqPayload).subscribe((result) => {
       console.log(result);
     })
   }
