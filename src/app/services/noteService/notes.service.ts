@@ -53,4 +53,14 @@ export class NotesService {
     }
     return this.httpService.DeleteService(this.BaseUrl + '/notes/' + reqPayload.id + '/Trash',null, true, headers)
   }
+
+  archiveNoteService(reqPayload: any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.id + '/Archive',null, true, headers)
+  }
 }
