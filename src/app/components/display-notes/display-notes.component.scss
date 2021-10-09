@@ -1,12 +1,44 @@
-.card{
-   display: flex;
+.card {
+   display       : flex;
    flex-direction: column;
-   margin-top: 50px;
-   margin-left: 150px;
-   width: 250px;
-   height: auto;
-   padding: 16px 16px 5px;
-   border: 1px solid transparent;
-   border-radius: 8px;
-   border-width: 1px;
+   height        : fit-content;
+   width         : 250px;
+   min-height    : 125px;
+   max-height    : 750px;
+   padding       : 16px 16px 8px;
+   border        : 1px solid transparent;
+   border-radius : 9px;
+   border-width  : 1px;
+   margin-bottom : 25px;
+}
+
+.textArea {
+   word-wrap: break-word;
+   overflow: auto;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 100; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+::-webkit-scrollbar {
+   width: 2px;
+   box-shadow: inset 0 0 5px grey;
+   border-radius: 10px;
+ }
+
+.card .icon {
+   visibility: hidden;
+}
+
+.card:hover .icon {
+   visibility: visible;
+}
+
+::ng-deep {
+   .dialog-container-custom .mat-dialog-container {
+      padding-left  : 20px !important;
+      padding-right : 20px !important;
+      padding-bottom: 5px !important;
+      border-radius : 12px !important;
+   }
 }
