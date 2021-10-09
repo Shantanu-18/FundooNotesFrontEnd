@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    if (this.loginForm.invalid) { return; }
+    if (this.loginForm.invalid) { 
+      this.snackbar.open('Login Failed', '', { duration: 1500 });
+      return; }
     else {
       let reqPayload = {
         email: this.loginForm.value.email,
@@ -46,6 +48,8 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem("token", res.token);
       });
+
+      location.href = "http://localhost:4200/dashboard/notes";
     }
   }
 }
