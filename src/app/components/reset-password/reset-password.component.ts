@@ -47,9 +47,6 @@ export class ResetPasswordComponent implements OnInit {
     this.hide = !this.hide;
   }
 
-  showSnackbar(message: any, action: any) {
-    this.snackbar.open(message, action, { duration: 1500 });
-  }
 
   get f() { return this.resetPassword.controls; }
 
@@ -58,6 +55,7 @@ export class ResetPasswordComponent implements OnInit {
     this.submitted = true;
     
     if (this.resetPassword.invalid) {
+      this.snackbar.open('Password not changed', '', { duration: 1500 });
       return;
     }
     else {
@@ -66,6 +64,8 @@ export class ResetPasswordComponent implements OnInit {
         confirmPassword: this.resetPassword.value.confirmPassword
       }
       console.log(this.resetPassword.value);
+
+      this.snackbar.open('Password changed Successfully', '', { duration: 1500 });
       
       this.route.paramMap.subscribe(params => {
         this.param = params.get("token");
@@ -77,6 +77,7 @@ export class ResetPasswordComponent implements OnInit {
         console.log(res)
       })
 
+      location.href = "http://localhost:4200/login";
     }
   }
 }

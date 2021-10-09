@@ -49,10 +49,6 @@ export class RegisterComponent implements OnInit {
       this.hide = !this.hide;
    }
 
-   showSnackbar(message: any, action: any) {
-      this.snackbar.open(message, action, { duration: 1500 });
-   }
-
    get f() { return this.registerForm.controls; }
 
    onSubmit() {
@@ -60,6 +56,7 @@ export class RegisterComponent implements OnInit {
       this.submitted = true;
 
       if (this.registerForm.invalid) {
+         this.snackbar.open('Registration Failed', '', { duration: 1500 });
          return;
       }
       else {
@@ -69,12 +66,15 @@ export class RegisterComponent implements OnInit {
             email: this.registerForm.value.email,
             password: this.registerForm.value.password,
          }
+         this.snackbar.open('Registration Successful', '', { duration: 1500 });
 
          console.log(this.registerForm.value);
 
          this.userService.registerSercive(reqPayload).subscribe((res) => {
             console.log(res)
          })
+
+         location.href = "http://localhost:4200/login";
       }
    }
 }
