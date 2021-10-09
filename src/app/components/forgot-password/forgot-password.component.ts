@@ -23,21 +23,21 @@ export class ForgotPasswordComponent implements OnInit {
 
   get f() { return this.forgotPassword.controls; }
 
-  showSnackbar(message: any, action: any) {
-    this.snackbar.open(message, action, { duration: 1500 });
-  }
 
   onSubmit() {
 
     this.submitted = true;
 
     if (this.forgotPassword.invalid) {
+      this.snackbar.open('Try Again', '', { duration: 1500 });
       return;
     }
     else {
       let reqPayload = {
         email: this.forgotPassword.value.email
       }
+
+      this.snackbar.open('Mail to reset password is sent to you.', '', { duration: 1500 });
 
       console.log(this.forgotPassword.value);
 
