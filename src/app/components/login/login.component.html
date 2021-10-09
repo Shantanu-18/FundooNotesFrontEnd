@@ -22,7 +22,7 @@
       <mat-form-field appearance="outline" [style.width.%]="95" class="form-group">
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="email"
-          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="on"/>
         <mat-error *ngIf="submitted && f.email.errors">
           <div *ngIf="f.email.errors.required" class="invalid-feedback">Email is required</div>
           <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -32,7 +32,7 @@
       <mat-form-field appearance="outline" [style.width.%]="95">
         <mat-label>Password</mat-label>
         <input [type]="hide?'password':'text'" matInput formControlName="password" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="on"/>
         <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">Password is required</div>
         </mat-error>
