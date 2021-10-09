@@ -1,20 +1,27 @@
-<div fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 30px;">
+<div fxLayout="row" fxLayoutAlign="space-between center">
    <button mat-icon-button>
-      <mat-icon style="font-size: 22px;">add_alert</mat-icon>
+      <img style="width: 19px; opacity: 0.71;" src="./../../../assets/icons/add_alert_black_24dp.svg" alt="add_alert">
    </button>
    <button mat-icon-button>
-      <mat-icon style="font-size: 22px;">person_add_alt</mat-icon>
+      <img style="width: 19px; opacity: 0.71;" src="./../../../assets/icons/person_add_alt_1_black_24dp.svg"
+         alt="person_add_alt">
    </button>
    <button mat-icon-button>
-      <mat-icon style="font-size: 22px;">palette</mat-icon>
+      <img style="width: 19px; opacity: 0.71;" src="./../../../assets/icons/color_lens_black_24dp.svg" alt="palette">
    </button>
    <button mat-icon-button>
-      <mat-icon style="font-size: 22px;">image</mat-icon>
+      <img style="width: 19px; opacity: 0.71;" src="./../../../assets/icons/image_black_24dp.svg" alt="image">
    </button>
    <button mat-icon-button>
-      <mat-icon style="font-size: 22px;">archive</mat-icon>
+      <img style="width: 19px; opacity: 0.71;" src="./../../../assets/icons/archive_black_24dp.svg" alt="archive">
    </button>
-   <button mat-icon-button>
-      <mat-icon style="font-size: 22px;">more_vert</mat-icon>
+   <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon style="font-size: 22px; opacity: 0.71;">more_vert</mat-icon>
+      <mat-menu #menu="matMenu">
+         <button mat-menu-item (click)='delete()'>Delete note</button>
+         <button mat-menu-item>Add label</button>
+         <button mat-menu-item>Add drawing</button>
+       </mat-menu>
    </button>
 </div>
+<!-- style="margin-top: 30px;" -->
