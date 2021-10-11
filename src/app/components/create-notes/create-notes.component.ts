@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { NotesService } from 'src/app/services/noteService/notes.service';
 
 @Component({
@@ -9,27 +8,26 @@ import { NotesService } from 'src/app/services/noteService/notes.service';
 })
 export class CreateNotesComponent implements OnInit {
   panelOpenState = false;
-  createNotesForm!: FormGroup;
+  title:any
+  message:any
   
-  constructor(private notesService: NotesService, private formBuilder: FormBuilder) { }
+  constructor(private notesService: NotesService) { }
   
   @Output() noteCreated= new EventEmitter<any>();
   
   ngOnInit(): void {
-    this.createNotesForm = this.formBuilder.group({
-      title: [],
-      takeNote: []
-    })
   }
 
   onClose() {
-    if (this.createNotesForm.value.title != null && this.createNotesForm.value.takeNote != null) {
-      console.log(this.createNotesForm.value);
-
+    if (this.title != null && this.message != null) {
+      
       let reqPayload = {
-        title: this.createNotesForm.value.title,
-        message: this.createNotesForm.value.takeNote
+        title: this.title,
+        message: this.message
       }
+      this.title='',
+      this.message=''
+      console.log(reqPayload);
 
       this.notesService.createNoteService(reqPayload).subscribe((response:any)=>{
         console.log(response);
