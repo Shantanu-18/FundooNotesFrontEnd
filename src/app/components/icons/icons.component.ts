@@ -9,9 +9,13 @@ import { NotesService } from 'src/app/services/noteService/notes.service';
 })
 export class IconsComponent implements OnInit {
   @Input() note: any;
+  @Input() isArchived: any;
+  @Input() isTrashed: any;
 
   constructor(private noteService: NotesService) { }
-  // @Output() noteUpdated= new EventEmitter<any>();
+  @Output() noteOperation = new EventEmitter<any>();
+  @Output() trashOperation = new EventEmitter<any>();
+  @Output() archiveOperation = new EventEmitter<any>();
 
   ngOnInit(): void {
   }
@@ -24,6 +28,7 @@ export class IconsComponent implements OnInit {
 
     this.noteService.deleteNoteService(reqPayload).subscribe((result) => {
       console.log(result);
+      this.noteOperation.emit(result);
     })
   }
 
@@ -35,6 +40,44 @@ export class IconsComponent implements OnInit {
 
     this.noteService.archiveNoteService(reqPayload).subscribe((result) => {
       console.log(result);
+      this.noteOperation.emit(result);
+    })
+  }
+
+  onUnarchive() {
+    let reqPayload = {
+      noteId: this.note.id
+    }
+    console.log('noteId', this.note.id);
+
+    this.noteService.unarchiveService(reqPayload).subscribe((result) => {
+      console.log(result);
+      this.archiveOperation.emit(result);
+    })
+  }
+
+  onDeleteForever() {
+    let reqPayload = {
+      noteId: this.note.id
+    }
+    console.log('noteId', this.note.id);
+
+    this.noteService.deleteForeverService(reqPayload).subscribe((result) => {
+      console.log(result);
+      this.trashOperation.emit(result);
+    })
+  }
+
+  onRestore() {
+    console.log('noteId', this.note.id);
+
+    let reqPayload = {
+      noteId: this.note.id
+    }
+
+    this.noteService.restoreService(reqPayload).subscribe((result) => {
+      console.log(result);
+      this.trashOperation.emit(result);
     })
   }
 }
