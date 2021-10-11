@@ -2,3 +2,10 @@
    width  : 19px;
    opacity: 0.71;
 }
+
+::ng-deep {
+   .tooltip {
+      background: #555252 !important;
+      margin-top: -8px !important;
+   }
+}
