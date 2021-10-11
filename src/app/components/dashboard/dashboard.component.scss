@@ -73,8 +73,14 @@
   .mat-toolbar-single-row {
     height: 36px;
   }
+
   .material-icons {
-    font-size: 10px;
+    font-size  : 10px;
     margin-left: 0px;
+  }
+
+  .sidenav-icons {
+    opacity         : 0.7;
+    background-color: #feefc3;
   }
 }
