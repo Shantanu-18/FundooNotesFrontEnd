@@ -86,9 +86,8 @@
       <div fxLayoutAlign="start center" fxLayoutGap="220px" style="margin-left: -2vh;" fxLayout.xs="column"
         fxLayoutGap.xs="20px">
 
-        <a mat-button href="http://localhost:4200/login" target="_blank" style="color: #1a73e8;">Sign in instead</a>
-        <button mat-raised-button class="button-next" color="primary"
-          (click)="onSubmit()">Next</button>
+        <button mat-button (click)='onSignInInstead()' style="color: #1a73e8;">Sign in instead</button>
+        <button mat-raised-button class="button-next" color="primary" (click)="onSubmit()">Next</button>
 
       </div>
 

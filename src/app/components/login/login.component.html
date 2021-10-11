@@ -44,14 +44,14 @@
     </div>
 
     <div style="margin-top: 5%; margin-left: -2vh;">
-      <a mat-button href="http://localhost:4200/forgotPassword" target="_blank" style="color: #1a73e8;">Forgot
-        Password?</a>
+      <button mat-button  style="color: #1a73e8;" (click)='onForgotPassword()'>Forgot
+        Password?</button>
     </div>
 
     <div fxLayoutAlign="start center" fxLayoutGap="220px" style="margin-top: 5%; margin-left: -2vh;"
       fxLayout.xs="column" fxLayoutGap.xs="20px" fxLayoutAlign.xs="center">
 
-      <a mat-button href="http://localhost:4200/register" target="_blank" style="color: #1a73e8;">Create Account</a>
+      <button mat-button (click)='onCreateAccount()' style="color: #1a73e8;">Create Account</button>
 
       <button mat-raised-button class="button-next" color="primary" (click)="onSubmit()">Sign in</button>
     </div>
