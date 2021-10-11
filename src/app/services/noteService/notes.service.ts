@@ -51,7 +51,7 @@ export class NotesService {
         Authorization: 'Bearer ' + this.token
       })
     }
-    return this.httpService.DeleteService(this.BaseUrl + '/notes/' + reqPayload.id + '/Trash',null, true, headers)
+    return this.httpService.DeleteService(this.BaseUrl + '/notes/' + reqPayload.id + '/Trash', null, true, headers)
   }
 
   archiveNoteService(reqPayload: any) {
@@ -61,6 +61,65 @@ export class NotesService {
         Authorization: 'Bearer ' + this.token
       })
     }
-    return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.id + '/Archive',null, true, headers)
+    return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.id + '/Archive', null, true, headers)
+  }
+
+  getAllArchiveService() {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.GetService(this.BaseUrl + '/notes/Archived/', true, headers);
+  }
+  getAllTrashService() {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.GetService(this.BaseUrl + '/notes/Trashed/', true, headers);
+  }
+
+  restoreService(reqPayload: any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.noteId + '/Trash/Restore/', null, true, headers)
+  }
+
+  deleteForeverService(reqPayload: any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.DeleteService(this.BaseUrl + '/notes/' + reqPayload.noteId + '/Trash/Delete/', null, true, headers)
+  }
+
+  emptyTrashService() {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.DeleteService(this.BaseUrl + '/notes/Trash/Empty', null, true, headers)
+  }
+
+  unarchiveService(reqPayload: any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.noteId + '/Archive/Unarchive/', null, true, headers)
   }
 }
