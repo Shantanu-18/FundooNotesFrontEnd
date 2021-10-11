@@ -13,18 +13,17 @@
 }
 
 .textArea {
-   word-wrap: break-word;
-   overflow: auto;
+   word-wrap    : break-word;
+   overflow     : hidden;
    text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 100; /* number of lines to show */
-   -webkit-box-orient: vertical;
 }
-::-webkit-scrollbar {
-   width: 2px;
-   box-shadow: inset 0 0 5px grey;
-   border-radius: 10px;
- }
+
+::ng-deep {
+   .mat-icon-button:hover {
+      background-color: #0000001f;
+   }
+}
+
 
 .card .icon {
    visibility: hidden;
