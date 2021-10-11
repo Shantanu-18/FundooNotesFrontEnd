@@ -1,37 +1,37 @@
-<form [formGroup]="createNotesForm">
-   <mat-expansion-panel hideToggle class="createNotes" (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false" #panel>
-      <mat-expansion-panel-header>
-         <mat-panel-title style="align-items: center;" (keydown.Space)="$event.stopPropagation()"
+<mat-expansion-panel hideToggle class="createNotes" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+   #panel>
+   <mat-expansion-panel-header>
+      <mat-panel-title style="align-items: center;" (keydown.Space)="$event.stopPropagation()"
          (keydown.Enter)="$event.stopPropagation()">
-            <input matInput class="form-group" formControlName="title"
-               placeholder="{{panelOpenState ? 'Title' : 'Take a note..'}}" #title>
-         </mat-panel-title>
-         <mat-panel-description style="flex-grow: 0;" *ngIf='!panelOpenState' (click)="panel.toggle()">
-            <button mat-icon-button>
-               <img src="./../../../assets/icons/check_box_black_24dp.svg" alt="check_box" style="opacity: 0.5;">
-            </button>
-            <button mat-icon-button>
-               <img src="./../../../assets/icons/brush_black_24dp.svg" alt="brush" style="opacity: 0.5;">
-            </button>
-            <button mat-icon-button>
-               <img src="./../../../assets/icons/image_black_24dp.svg" alt="image" style="opacity: 0.5;">
-            </button>
-         </mat-panel-description>
-         <mat-panel-description style="flex-grow: 0;" *ngIf='panelOpenState'>
-            <button mat-icon-button (click)="panel.toggle()">
-               <img src="./../../../assets/icons/push_pin_black_24dp.svg" alt="push_pin" style="opacity: 0.8;">
-            </button>
-         </mat-panel-description>
-      </mat-expansion-panel-header>
-      <textarea matInput class="form-group" formControlName="takeNote" placeholder="Take a note.."></textarea>
-      <div fxLayout="row" fxLayoutAlign="space-between end" #message>
-         <div fxFlex="70">
-            <app-icons></app-icons>
-         </div>
-         <div><button mat-icon-button (click)="onClose();panel.toggle()" style="opacity: 0.9;">
-               Close
-            </button></div>
+         <textarea matInput style="overflow: hidden" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="3" [(ngModel)]="title"
+            placeholder="{{panelOpenState ? 'Title' : 'Take a note..'}}"></textarea>
+      </mat-panel-title>
+      <mat-panel-description style="flex-grow: 0;" *ngIf='!panelOpenState' (click)="panel.toggle()">
+         <button mat-icon-button>
+            <img src="./../../../assets/icons/check_box_black_24dp.svg" alt="check_box" style="opacity: 0.5;">
+         </button>
+         <button mat-icon-button>
+            <img src="./../../../assets/icons/brush_black_24dp.svg" alt="brush" style="opacity: 0.5;">
+         </button>
+         <button mat-icon-button>
+            <img src="./../../../assets/icons/image_black_24dp.svg" alt="image" style="opacity: 0.5;">
+         </button>
+      </mat-panel-description>
+      <mat-panel-description style="flex-grow: 0;" *ngIf='panelOpenState'>
+         <button mat-icon-button (click)="panel.toggle()">
+            <img src="./../../../assets/icons/push_pin_black_24dp.svg" alt="push_pin" style="opacity: 0.8;">
+         </button>
+      </mat-panel-description>
+   </mat-expansion-panel-header>
+   <textarea matInput style="overflow: hidden" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
+      cdkAutosizeMaxRows="10" [(ngModel)]="message" placeholder="Take a note.."></textarea>
+   <div fxLayout="row" fxLayoutAlign="space-between end">
+      <div fxFlex="70">
+         <app-icons></app-icons>
       </div>
-   </mat-expansion-panel>
-</form>
+      <div><button mat-icon-button (click)="onClose();panel.toggle()" style="opacity: 0.9;">
+            Close
+         </button></div>
+   </div>
+</mat-expansion-panel>
