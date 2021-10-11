@@ -17,7 +17,7 @@
                <textarea style="overflow: hidden" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
                   cdkAutosizeMaxRows="10"> {{note.message}}</textarea>
             </div>
-            <mat-card-actions>
+            <mat-card-actions fxFlexAlign="start">
                <app-icons class="icon" [note]='note' [isTrashed]='isTrash' (trashOperation)='Operation($event)'></app-icons>
             </mat-card-actions>
          </mat-card>
