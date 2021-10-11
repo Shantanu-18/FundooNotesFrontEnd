@@ -2,7 +2,8 @@
    <input matInput [(ngModel)]="title">
 </div>
 <div class="textArea-message">
-   <input matInput [(ngModel)]="message">
+   <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="20"
+      [(ngModel)]="message"></textarea>
 </div>
 <div fxLayout="row" fxLayoutAlign="space-between end">
    <div fxFlex="70">
@@ -12,5 +13,3 @@
          Close
       </button></div>
 </div>
-<!-- style="margin-bottom: 13px;"  -->
-<!-- style="margin-bottom: 20px;" -->
