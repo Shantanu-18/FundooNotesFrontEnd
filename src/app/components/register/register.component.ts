@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/userService/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
    submitted = false;
    hide: boolean = true;
 
-   constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar) { }
+   constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar, private router: Router) { }
 
    ngOnInit() {
       this.registerForm = this.formBuilder.group({
@@ -72,9 +73,15 @@ export class RegisterComponent implements OnInit {
 
          this.userService.registerSercive(reqPayload).subscribe((res) => {
             console.log(res)
-         })
-
-         location.href = "http://localhost:4200/login";
+            this.router.navigateByUrl('/login')
+         }, error => {
+            console.log(error);
+            this.snackbar.open(error, '', { duration: 1500 });
+         });
       }
+   }
+
+   onSignInInstead(){
+      this.router.navigateByUrl('/login')
    }
 }

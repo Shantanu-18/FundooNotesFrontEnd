@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/userService/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private snackbar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -31,9 +32,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    if (this.loginForm.invalid) { 
+    if (this.loginForm.invalid) {
       this.snackbar.open('Login Failed', '', { duration: 1500 });
-      return; }
+      return;
+    }
     else {
       let reqPayload = {
         email: this.loginForm.value.email,
@@ -47,9 +49,18 @@ export class LoginComponent implements OnInit {
         console.log(res);
 
         localStorage.setItem("token", res.token);
+        this.router.navigateByUrl('/dashboard/notes')
+      }, error => {
+        console.log(error);
+        this.snackbar.open(error, '', { duration: 1500 });
       });
-
-      location.href = "http://localhost:4200/dashboard/notes";
     }
+  }
+  onForgotPassword(){
+    this.router.navigateByUrl('/forgotPassword');
+  }
+
+  onCreateAccount(){
+    this.router.navigateByUrl('/register');
   }
 }
