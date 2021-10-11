@@ -36,23 +36,23 @@
    <mat-sidenav-container class="sidenav-container">
       <mat-sidenav mode="side" #snav style="width: 250px;">
          <mat-nav-list>
-            <a mat-list-item>
-               <button mat-icon-button  style=" opacity:0.7; background-color: #feefc3;">
+            <a mat-list-item (click)='note()'>
+               <button mat-icon-button style=" opacity:0.7; background-color: #feefc3;">
                   <img src="./../../../assets/icons/lightbulb_black_24dp.svg">
                </button>Notes</a>
             <a mat-list-item>
-               <button mat-icon-button  style=" opacity:0.7; background-color: #feefc3;">
+               <button mat-icon-button style=" opacity:0.7; background-color: #feefc3;">
                   <img src="./../../../assets/icons/notifications_black_24dp.svg">
                </button>Reminders</a>
             <a mat-list-item>
                <button mat-icon-button style=" opacity:0.7; background-color: #feefc3;">
                   <img src="./../../../assets/icons/edit_black_24dp.svg">
                </button>Edit Labels</a>
-            <a mat-list-item>
+            <a mat-list-item  (click)='archive()'>
                <button mat-icon-button style=" opacity:0.7; background-color: #feefc3;">
                   <img src="./../../../assets/icons/archive_black_24dp.svg">
                </button>Archive</a>
-            <a mat-list-item>
+            <a mat-list-item  (click)='Bin()'>
                <button mat-icon-button style=" opacity:0.7; background-color: #feefc3;">
                   <img src="./../../../assets/icons/delete_black_24dp.svg">
                </button>Bin</a>
