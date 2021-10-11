@@ -7,6 +7,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
 import { AuthenticationGuard } from './services/authentication.guard';
+import { GetAllTrashComponent } from './components/get-all-trash/get-all-trash.component';
+import { GetAllArchiveComponent } from './components/get-all-archive/get-all-archive.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,7 +20,8 @@ const routes: Routes = [
     path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard],
     children: [
       { path: 'notes', component: GetAllNotesComponent },
-
+      { path: 'trash', component: GetAllTrashComponent },
+      { path: 'archive', component: GetAllArchiveComponent },
     ]
   }
 ];

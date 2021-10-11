@@ -30,6 +30,9 @@ import { AuthenticationGuard } from './services/authentication.guard';
 import { UpdateComponent } from './components/update/update.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { GetAllTrashComponent } from './components/get-all-trash/get-all-trash.component';
+import { GetAllArchiveComponent } from './components/get-all-archive/get-all-archive.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { MatMenuModule } from '@angular/material/menu';
     IconsComponent,
     CreateNotesComponent,
     DisplayNotesComponent,
-    UpdateComponent
+    UpdateComponent,
+    GetAllTrashComponent,
+    GetAllArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatExpansionModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTooltipModule
   ],
   providers: [AuthenticationGuard],
   bootstrap: [AppComponent]
