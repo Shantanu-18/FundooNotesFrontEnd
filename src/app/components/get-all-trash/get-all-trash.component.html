@@ -1,0 +1,26 @@
+<div fxLayout="column">
+   <div fxFlexAlign="center" fxLayout="row" style="padding-top: 24px;
+   padding-bottom: 8px; align-items: center;">
+      <div class="header">Notes in the Recycle Bin are deleted after 7 days.</div>
+      <div>
+         <button mat-button class="empty-button" (click)='onEmptyBin()'>Empty bin</button>
+      </div>
+   </div>
+   <div style="margin-top: 20px; margin-left: 150px;">
+      <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="20px">
+         <mat-card class="card" *ngFor='let note of noteList'>
+            <div class="textArea">
+               <textarea style="overflow: hidden" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="3"> {{note.title}}</textarea>
+            </div>
+            <div class="textArea" style="padding-top: 20px">
+               <textarea style="overflow: hidden" matInput cdkTextareaAutosize cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="10"> {{note.message}}</textarea>
+            </div>
+            <mat-card-actions>
+               <app-icons class="icon" [note]='note' [isTrashed]='isTrash' (trashOperation)='Operation($event)'></app-icons>
+            </mat-card-actions>
+         </mat-card>
+      </div>
+   </div>
+</div>
