@@ -1,20 +1,39 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
-   <button mat-icon-button>
+   <button mat-icon-button  *ngIf=!isTrashed
+   matTooltip="Remind me"  matTooltipClass="tooltip"> 
       <img class="icons" src="./../../../assets/icons/add_alert_black_24dp.svg" alt="add_alert">
    </button>
-   <button mat-icon-button>
+   <button mat-icon-button *ngIf=!isTrashed
+   matTooltip="Collaborator"  matTooltipClass="tooltip">
       <img class="icons" src="./../../../assets/icons/person_add_alt_1_black_24dp.svg" alt="person_add_alt">
    </button>
-   <button mat-icon-button>
+   <button mat-icon-button *ngIf=!isTrashed
+   matTooltip="Change colour"  matTooltipClass="tooltip">
       <img class="icons" src="./../../../assets/icons/color_lens_black_24dp.svg" alt="palette">
    </button>
-   <button mat-icon-button>
+   <button mat-icon-button *ngIf=!isTrashed
+   matTooltip="Add image"  matTooltipClass="tooltip">
       <img class="icons" src="./../../../assets/icons/image_black_24dp.svg" alt="image">
    </button>
-   <button mat-icon-button (click)='onArchive()'>
+   <button mat-icon-button (click)='onArchive()' *ngIf="!isArchived && !isTrashed"
+   matTooltip="Archive"  matTooltipClass="tooltip">
       <img class="icons" src="./../../../assets/icons/archive_black_24dp.svg" alt="archive">
    </button>
-   <button mat-icon-button [matMenuTriggerFor]="menu">
+   <button mat-icon-button (click)='onUnarchive()' *ngIf='isArchived && !isTrashed'
+   matTooltip="Unarchive"  matTooltipClass="tooltip">
+      <img class="icons" src="./../../../assets/icons/unarchive_black_24dp.svg" alt="Unarchive">
+   </button>
+   <button mat-icon-button   (click)='onDeleteForever()' *ngIf=isTrashed  matTooltip="Delete forever"  matTooltipClass="tooltip">
+      <img src="./../../../assets/icons/delete_forever_black_24dp.svg" alt="delete_forever"
+         style="width: 19px; opacity: 0.71;">
+   </button>
+   <button mat-icon-button  (click)='onRestore()' *ngIf=isTrashed  
+   matTooltip="Restore"  matTooltipClass="tooltip">
+      <img src="./../../../assets/icons/restore_from_trash_black_24dp.svg" alt="restore"
+         style="width: 19px; opacity: 0.71;">
+   </button>
+   <button mat-icon-button *ngIf=!isTrashed
+   [matMenuTriggerFor]="menu" matTooltip="More"  matTooltipClass="tooltip">
       <mat-icon style="font-size: 22px; opacity: 0.71;">more_vert</mat-icon>
       <mat-menu #menu="matMenu">
          <button mat-menu-item (click)='onDelete()'>Delete note</button>
