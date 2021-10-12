@@ -11,8 +11,8 @@
 }
 
 ::ng-deep .mat-menu-panel {
-   width : 100px;
-   height: 100px;
+   width: 113px;
+   height: 103px;
 }
 
 ::ng-deep .mat-menu-content {
@@ -21,10 +21,11 @@
    flex-flow  : wrap !important;
    padding    : 0px !important;
    margin     : 0px !important;
-
+   margin-left: 6px !important;
 }
 
 ::ng-deep .mat-menu-item .mat-icon {
+   font-size     : 25px;
    margin-right  : 0px !important;
    vertical-align: baseline !important;
 }
