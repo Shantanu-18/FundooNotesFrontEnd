@@ -122,4 +122,14 @@ export class NotesService {
     }
     return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.noteId + '/Archive/Unarchive/', null, true, headers)
   }
+
+  changeColorService(reqPayload: any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.noteId + '/Colour', reqPayload, true, headers)
+  }
 }
