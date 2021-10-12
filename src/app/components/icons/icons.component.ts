@@ -11,7 +11,7 @@ export class IconsComponent implements OnInit {
   @Input() note: any;
   @Input() isArchived: any;
   @Input() isTrashed: any;
-  colorArray = ['#e3dede', '#f28b82', '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8', '#e8eaed'];
+  colorArray = ['#fff', '#f28b82', '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8', '#e8eaed'];
 
   constructor(private noteService: NotesService) { }
   @Output() noteOperation = new EventEmitter<any>();
