@@ -33,6 +33,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { GetAllTrashComponent } from './components/get-all-trash/get-all-trash.component';
 import { GetAllArchiveComponent } from './components/get-all-archive/get-all-archive.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { CollaborationComponent } from './components/collaboration/collaboration.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     DisplayNotesComponent,
     UpdateComponent,
     GetAllTrashComponent,
-    GetAllArchiveComponent
+    GetAllArchiveComponent,
+    CollaborationComponent
   ],
   imports: [
     BrowserModule,
