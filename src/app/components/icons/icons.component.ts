@@ -11,6 +11,7 @@ export class IconsComponent implements OnInit {
   @Input() note: any;
   @Input() isArchived: any;
   @Input() isTrashed: any;
+  colorArray = ['#e3dede', '#f28b82', '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8', '#e8eaed'];
 
   constructor(private noteService: NotesService) { }
   @Output() noteOperation = new EventEmitter<any>();
@@ -77,6 +78,23 @@ export class IconsComponent implements OnInit {
 
     this.noteService.restoreService(reqPayload).subscribe((result) => {
       console.log(result);
+      this.trashOperation.emit(result);
+    })
+  }
+
+  colorCode(value: any) {
+    console.log(value);
+
+    let reqPayload = {
+      noteId: this.note.id,
+      color: value
+    }
+    console.log(reqPayload);
+
+    this.noteService.changeColorService(reqPayload).subscribe((result) => {
+      console.log(result);
+      this.noteOperation.emit(result);
+      this.archiveOperation.emit(result);
       this.trashOperation.emit(result);
     })
   }
