@@ -1,1 +1,45 @@
-<p>collaboration works!</p>
+<div class="title">
+   Collaborators
+</div>
+<div class="ownerInfo">
+   <div>
+      <img src="./../../../assets/icons/account_circle_black_24dp.svg" alt="account_circle"
+         style="opacity:0.6;  width: 40px;">
+   </div>
+   <div>
+      <div>
+         <span class="name">{{firstName}} {{lastName}}</span>
+         <span style="font-style: italic;margin-left: 5px;">(Owner)</span>
+      </div>
+      <div style="color: #5f6368; margin-top: -5px; margin-left: 5px;">
+         {{email}}
+      </div>
+   </div>
+</div>
+
+<div style=" padding-left: 15px;">
+   <div *ngFor='let e of collabArray' style="display: flex;justify-content: space-between;align-items: center;">
+      <span> {{e.collabEmail}}</span>
+      <button mat-icon-button (click)="removeCollab(e.collabEmail)">
+         <mat-icon style="font-size: 15px; opacity: 0.71;">close</mat-icon>
+      </button>
+   </div>
+</div>
+
+<div style="padding: 5px; margin-left: 5px;" fxLayout="row" fxLayoutAlign="start center">
+   <div>
+      <mat-icon style="font-size: 24px; opacity: .5;">person_add</mat-icon>
+   </div>
+   <div style="margin-left: 10px;">
+      <input matInput placeholder="Email to search with" [(ngModel)]="collabEmail">
+   </div>
+</div>
+
+<div class="buttons">
+   <div><button mat-button style="opacity: 0.9;" (click)="onClose()">
+         Close
+      </button></div>
+   <div><button mat-button style="opacity: 0.9;" (click)="onSave()">
+         Save
+      </button></div>
+</div>
