@@ -11,7 +11,7 @@
 }
 
 ::ng-deep .mat-menu-panel {
-   width: 113px;
+   width : 113px;
    height: 103px;
 }
 
@@ -35,9 +35,7 @@
    height     : 32px !important;
 }
 
-::ng-deep {
-   .container-custom .mat-dialog-container {
-      padding-bottom: 0px !important;
-      border-radius : 12px !important;
-   }
+::ng-deep .container-custom .mat-dialog-container {
+   padding-bottom: 0px !important;
+   border-radius : 12px !important;
 }
