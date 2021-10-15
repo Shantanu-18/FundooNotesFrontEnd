@@ -73,6 +73,7 @@ export class NotesService {
     }
     return this.httpService.GetService(this.BaseUrl + '/notes/Archived/', true, headers);
   }
+
   getAllTrashService() {
     let headers = {
       headers: new HttpHeaders({
@@ -131,5 +132,35 @@ export class NotesService {
       })
     }
     return this.httpService.PutService(this.BaseUrl + '/notes/' + reqPayload.noteId + '/Colour', reqPayload, true, headers)
+  }
+
+  addCollabService(reqPayload: any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.PostService(this.BaseUrl + '/Collaboration/' + reqPayload.noteId, reqPayload, true, headers);
+  }
+
+  getCollabService(reqPayload: any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.GetService(this.BaseUrl + '/Collaboration/' + reqPayload.noteId, true, headers);
+  }
+
+  removeCollabService(reqPayload: any,noteId:any) {
+    let headers = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    }
+    return this.httpService.DeleteService(this.BaseUrl + '/Collaboration/' + noteId, reqPayload, true, headers);
   }
 }
