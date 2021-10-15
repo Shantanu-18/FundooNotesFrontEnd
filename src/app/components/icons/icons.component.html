@@ -3,7 +3,7 @@
       <img class="icons" src="./../../../assets/icons/add_alert_black_24dp.svg" alt="add_alert">
    </button>
 
-   <button mat-icon-button *ngIf=!isTrashed matTooltip="Collaborator" matTooltipClass="tooltip">
+   <button mat-icon-button *ngIf=!isTrashed matTooltip="Collaborator" matTooltipClass="tooltip" (click)='collabDialog()'>
       <img class="icons" src="./../../../assets/icons/person_add_alt_1_black_24dp.svg" alt="person_add_alt">
    </button>
 
