@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NotesService } from 'src/app/services/noteService/notes.service';
+import { CollaborationComponent } from '../collaboration/collaboration.component';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class IconsComponent implements OnInit {
   @Input() isTrashed: any;
   colorArray = ['#fff', '#f28b82', '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8', '#e8eaed'];
 
-  constructor(private noteService: NotesService) { }
+  constructor(private noteService: NotesService, public dialog: MatDialog) { }
   @Output() noteOperation = new EventEmitter<any>();
   @Output() trashOperation = new EventEmitter<any>();
   @Output() archiveOperation = new EventEmitter<any>();
@@ -97,5 +99,19 @@ export class IconsComponent implements OnInit {
       this.archiveOperation.emit(result);
       this.trashOperation.emit(result);
     })
+  }
+
+
+  collabDialog() {
+    const dialogRef = this.dialog.open(CollaborationComponent, {
+      panelClass: 'container-custom',
+      width: "600px",
+      data: this.note
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.noteOperation.emit(result);
+    });
   }
 }
