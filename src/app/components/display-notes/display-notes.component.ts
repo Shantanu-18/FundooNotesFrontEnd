@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CollaborationComponent } from '../collaboration/collaboration.component';
 import { UpdateComponent } from '../update/update.component';
 
 @Component({
@@ -32,18 +31,5 @@ export class DisplayNotesComponent implements OnInit {
 
   operation(value: any) {
     this.noteUpdated.emit(value);
-  }
-
-  collabDialog(note: any) {
-    const dialogRef = this.dialog.open(CollaborationComponent, {
-      panelClass: 'dialog-container-custom',
-      width: "600px",
-      data: note
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      this.noteUpdated.emit(result);
-    });
   }
 }
